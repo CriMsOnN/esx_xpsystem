@@ -1,0 +1,83 @@
+body {
+    overflow: hidden;
+}
+
+.container2 {
+    position: relative;
+    width: 550px;
+    height: 600px;
+    /*background-image: url("../images/bgPanel.png");*/
+    /*background-position: center;*/
+    /*background-repeat: no-repeat;*/
+    /*background-size: 100% 105%;*/
+    background-color: #1A1A1A;
+    left: 65%;
+    top: 30%;
+    overflow-y: scroll;
+}
+
+.title {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+}
+
+.title p {
+    font-size: 20px;
+    color: #fff;
+    margin-left: 150px;
+    margin-top: 20px;
+    border-bottom: 3px solid #fff;
+}
+
+.title p:hover {
+    opacity: 0.6;
+    color: #f7fafc;
+}
+
+.item {
+    margin-top: 70px;
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 1) 0px 54px 55px, rgba(0, 0, 0, 1) 0px -12px 30px, rgba(0, 0, 0, 1) 0px 4px 6px, rgba(0, 0, 0, 1) 0px 12px 13px, rgba(0, 0, 0, 1) 0px -3px 5px;
+}
+
+.item .item-buy {
+    float: right;
+}
+
+.item .item-price {
+    font-size: 5px;
+    color: #fff;
+    clear: both;
+    padding-left: 400px;
+}
+
+.item .item-description {
+    color: #fff;
+    font-size: 15px;
+    float: left;
+    padding-top: 15px;
+    padding-left: 1.2em;
+}
+
+/*
+* SCROLL BAR CSS
+ */
+::-webkit-scrollbar {
+    width: 20px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #d6dee1;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #a8bbbf;
+}
