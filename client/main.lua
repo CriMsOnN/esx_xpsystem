@@ -4,7 +4,7 @@ local MenuIsOpened = false
 AddEventHandler("playerSpawned", function()
     spawned = true
     TriggerServerEvent("xp_system:server:getPlayerXP")
-    Citizen.Wait(10)
+    Citizen.Wait(5000)
     addXP()
 end)
 
@@ -30,8 +30,20 @@ AddEventHandler("xp_system:client:retrievePlayerXP", function(player)
     end
 end)
 
-RegisterNUICallback("playSound", function()
-    PlaySoundFrontend(-1, "SELECT", "HUD_FRONTEND_DEFAULT_SOUNDSET")
+RegisterNetEvent("xp_system:client:updateHUD")
+AddEventHandler("xp_system:client:updateHUD", function(player)
+    SendNUIMessage({
+        action = "updateHUD",
+        xp = player.xp
+    })
+end)
+
+RegisterNUICallback("giveItem", function(item)
+    TriggerServerEvent("xp_system:server:giveItem", item.giveItem)
+end)
+
+RegisterNUICallback("givePromo", function(promo)
+    TriggerServerEvent("xp_system:server:getPromo", promo.data)
 end)
 
 RegisterNUICallback("close", function()

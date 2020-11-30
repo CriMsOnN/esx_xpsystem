@@ -41,23 +41,43 @@ body {
     box-shadow: rgba(0, 0, 0, 1) 0px 54px 55px, rgba(0, 0, 0, 1) 0px -12px 30px, rgba(0, 0, 0, 1) 0px 4px 6px, rgba(0, 0, 0, 1) 0px 12px 13px, rgba(0, 0, 0, 1) 0px -3px 5px;
 }
 
-.item .item-buy {
+button:hover {
+    background-color: #ff4444 !important;
+    font-family: "Comic Sans MS", sans-serif;
+}
+
+.item .item-buy  {
     float: right;
 }
 
+.item .item-buy button {
+    font-family: "Comic Sans MS", sans-serif !important;
+}
+
 .item .item-price {
-    font-size: 5px;
     color: #fff;
-    clear: both;
-    padding-left: 400px;
+    padding-left: 420px;
+}
+
+.item .item-price p {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 10px;
 }
 
 .item .item-description {
-    color: #fff;
     font-size: 15px;
+    font-family: "Comic Sans MS", sans-serif !important;
     float: left;
     padding-top: 15px;
     padding-left: 1.2em;
+    color: #b8b8b8;
+    text-shadow: 1px 0px 12px rgba(255, 2, 0, 0.48);
+}
+
+.close {
+    float: right;
+    color: red;
 }
 
 /*

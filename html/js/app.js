@@ -1,16 +1,21 @@
 $(document).ready(() => {
     $("body").hide();
-
 })
 
+
+
 window.addEventListener("message", (event) => {
+    var elems = document.querySelectorAll(".modal")
+    var instance = M.Modal.getInstance(elems)
     if (event.data.action === "show") {
+        $(".modal").modal();
+        $(".title").html("")
+        $(".items").html("")
         $.each(event.data.items, (index, name) => {
-            console.log(name.description)
             $(".items").append(`
-                <div class="item">
+                <div class="item" data-key="${name.name}">
                     <div class="item-description">${name.description}</div>
-                    <div class="item-buy" data-id="${name}">
+                    <div class="item-buy">
                         <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"><span class="material-icons">
                             shopping_cart
                         </span>Buy</button>
@@ -20,22 +25,38 @@ window.addEventListener("message", (event) => {
                     </div>
                 </div>
             `)
-            // $("#XPMenu-items").append(`
-            //     <div id="item-${index}" class="col s4 items"><span class="flow-text">${name.toUpperCase()}</span><img src="./images/${name}.png"></div>
-            // `)
+        })
+        $(document).on("click", "#redeem", (e) => {
+            e.preventDefault();
+            const value = $("#code").val()
+            $.post("http://xp_system/givePromo", JSON.stringify({
+                data: value
+            }),
+                $("#code").val("")
+            )
+        })
+        $(document).on("click", ".item", function(e) {
+            e.preventDefault();
+            const item = $(this).data("key")
+            $.post("http://xp_system/giveItem", JSON.stringify({
+                giveItem: item
+            }))
         })
         $("body").show();
         $(".title").append(`<p>Redeem XP POINTS: ${event.data.xp}</p>`)
 
-        $(".flow-text").mouseover((e) => {
-            $.post("http://exp_system/playSound", JSON.stringify({}))
+        $(".item-buy").mouseover((e) => {
+            $.post("http://xp_system/playSound", JSON.stringify({}))
         })
 
-        $("#button-close").on("click", (e) => {
+        $(".close").on("click", (e) => {
             e.preventDefault()
-            $.post("http://exp_system/close", JSON.stringify({}))
+            $.post("http://xp_system/close", JSON.stringify({}))
         })
-    } else if (event.data.action === "close") {
+    } else if (event.data.action == "updateHUD") {
+        $(".title").html("")
+        $(".title").append(`<p>Reedem XP POINTS: ${event.data.xp}</p>`)
+    }else if (event.data.action === "close") {
         $("#xpText").html("")
         $("#XPMenu-items").html("")
         $("body").hide();

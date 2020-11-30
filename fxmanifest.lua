@@ -12,11 +12,12 @@ client_scripts {
 }
 
 server_scripts {
+    'shared/config.lua',
     '@async/async.lua',
 	'@mysql-async/lib/MySQL.lua',
-    'shared/config.lua',
     'server/main.lua',
     'server/classes/player.lua',
+    'server/classes/promo.lua'
 }
 
 ui_page 'html/ui.html'

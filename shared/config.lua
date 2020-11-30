@@ -1,14 +1,13 @@
 Config = {}
 
 Config.RewardTime = 60 -- 1 hour
-Config.RewardXP = 10 -- 10 xp per hour
-
+Config.RewardXp = 10
 
 Config.Items = {
-    {["name"] = "bulletproof", ["price"] = 10, ["description"] = "Buy bulletproof by using 10 xp points", ["image_name"] = "bulletproof_vest"},
-    {["name"] = "advanced rifle", ["price"] = 10, ["description"] = "Buy ammo for pistol by using 10 xp points", ["image_name"] = "WEAPON_ADVANCEDRIFLE"},
-    {["name"] = "appistol", ["price"] = 10, ["description"] = "Buy ingame cash by using 10 xp points", ["image_name"] = "WEAPON_APPISTOL"},
-    {["name"] = "assault rifle", ["price"] = 10, ["description"] = "Buy gold priority by using 10 xp points", ["image_name"] = "WEAPON_ASSAULTRIFLE"},
-    {["name"] = "assault smg", ["price"] = 10, ["description"] = "Buy platinum priority by using 10 xp points", ["image_name"] = "WEAPON_ASSAULTSMG"},
-    {["name"] = "carbine rifle", ["price"] = 10, ["description"] = "Buy diamond priority by using 10 xp points", ["image_name"] = "WEAPON_CARBINERIFLE"}
+    {["name"] = "bulletproof", ["price"] = 10, ["description"] = "Buy Bulletproof Vest", ["item"] = "item_standard"},
+    {["name"] = "WEAPON_ADVANCEDRIFLE", ["price"] = 900, ["description"] = "Buy Advanced Rifle", ["item"] = "item_weapon", ["ammo"] = 100},
+    {["name"] = "WEAPON_APPISTOL", ["price"] = 10, ["description"] = "Buy AP PISTOL", ["item"] = "item_weapon", ["ammo"] = 100},
+    {["name"] = "WEAPON_ASSAULTRIFLE", ["price"] = 10, ["description"] = "Buy Assault Rifle", ["item"] = "item_weapon", ["ammo"] = 100},
+    {["name"] = "WEAPON_ASSAULTSMG", ["price"] = 10, ["description"] = "Buy Assault SMG", ["item"] = "item_weapon", ["ammo"] = 100},
+    {["name"] = "WEAPON_CARBINERIFLE", ["price"] = 10, ["description"] = "Buy Carbine Rifle", ["item"] = "item_weapon", ["ammo"] = 100}
 }
