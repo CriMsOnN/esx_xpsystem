@@ -36,6 +36,7 @@ AddEventHandler("xp_system:server:giveItem", function(item)
                         break
                     else
                         xPlayer.addWeaponAmmo(v.name, v.ammo)
+                        Player.PlayerData[_source].xp = Player.PlayerData[_source].xp - v.price
                         xPlayer.showNotification("You successfully purchased ammo for  ~g~" .. v.name .. "~s~", true, false, 140)
                         break
                     end
