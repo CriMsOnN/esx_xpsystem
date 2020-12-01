@@ -10,6 +10,8 @@ getPlayerXP = function(source, identifier)
             createPlayerXP(source, identifier)
         end
     end)
+
+    TriggerClientEvent("xp_system:client:startInterval", source)
 end
 
 retrievePlayerXP = function(source)
@@ -19,7 +21,7 @@ end
 addPlayerXP = function(source)
     local identifier = GetPlayerIdentifier(source, 0)
     local localXP = Player.PlayerData[source].xp
-    local newXP = (localXP + Config.RewardXP)
+    local newXP = (localXP + Config.RewardXp)
 
     MySQL.Async.execute("UPDATE exp_system SET xp = @xp WHERE identifier = @identifier", {
         ['xp'] = newXP,

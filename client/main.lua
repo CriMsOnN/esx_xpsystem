@@ -4,7 +4,10 @@ local MenuIsOpened = false
 AddEventHandler("playerSpawned", function()
     spawned = true
     TriggerServerEvent("xp_system:server:getPlayerXP")
-    Citizen.Wait(5000)
+end)
+
+RegisterNetEvent("xp_system:client:startInterval")
+AddEventHandler("xp_system:client:startInterval", function()
     addXP()
 end)
 
@@ -55,12 +58,26 @@ RegisterNUICallback("close", function()
     MenuIsOpened = false
 end)
 
+RegisterNetEvent("xp_system:client:sendNotification")
+AddEventHandler("xp_system:client:sendNotification", function()
+    SendNUIMessage({
+        action = "notify",
+        xp = Config.RewardXp
+    })
+end)
+
+RegisterCommand("test", function()
+    TriggerEvent("xp_system:client:sendNotification")
+end)
+
 function addXP()
     TriggerServerEvent("xp_system:server:addPlayerXP")
-    SetTimeout(Config.RewardTime * 10 * 1000, addXP)
+    TriggerEvent("xp_system:client:sendNotification")
+    SetTimeout(Config.RewardTime * 10 * 100, addXP)
 end
 
 
 AddEventHandler("onResourceStart", function()
+    Citizen.Wait(5000)
     TriggerServerEvent("xp_system:server:getPlayerXP")
 end)

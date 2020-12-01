@@ -56,10 +56,10 @@ AddEventHandler("playerDropped", function()
             ['xp'] = Player.PlayerData[_source].xp,
             ['identifier'] = identifier
         }, function(rows)
-            if rows then
-                return
-            end
-        end)
+        if rows then
+            return
+        end
+    end)
 end)
 
 
@@ -102,7 +102,32 @@ RegisterCommand("createpromo", function(source, args, raw)
 
 end, false)
 
+AddEventHandler("onResourceStop", function(resource)
+    for k,v in pairs(Player.PlayerData) do
+        MySQL.Async.execute("UPDATE exp_system SET xp = @xp WHERE identifier = @identifier", {
+            ['xp'] = v.xp,
+            ['identifier'] = v.identifier
+        }, function(rows)
+           if rows then
+                print("SAVED")
+           end
+        end)
+    end
+end)
 
 function printToServer(text)
     print("[^1XP-SYSTEM^7] " ..text .. ": ^2true^7")
+end
+
+function dump(o)
+    if type(o) == 'table' then
+        local s = '{ '
+        for k,v in pairs(o) do
+            if type(k) ~= 'number' then k = '"'..k..'"' end
+            s = s .. '['..k..'] = ' .. dump(v) .. ','
+        end
+        return s .. '} '
+    else
+        return tostring(o)
+    end
 end

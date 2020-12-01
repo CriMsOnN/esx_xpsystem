@@ -1,5 +1,6 @@
 $(document).ready(() => {
-    $("body").hide();
+    $(".container2").hide();
+    $(".notify").hide();
 })
 
 
@@ -42,7 +43,7 @@ window.addEventListener("message", (event) => {
                 giveItem: item
             }))
         })
-        $("body").show();
+        $(".container2").show();
         $(".title").append(`<p>Redeem XP POINTS: ${event.data.xp}</p>`)
 
         $(".item-buy").mouseover((e) => {
@@ -59,6 +60,20 @@ window.addEventListener("message", (event) => {
     }else if (event.data.action === "close") {
         $("#xpText").html("")
         $("#XPMenu-items").html("")
-        $("body").hide();
+        $(".container2").hide();
+    } else if (event.data.action === "notify") {
+        $(".notify").html("");
+        $(".notify").append("<div class='notifyText'>You have received " + event.data.xp + " XP for playing on our server </div>")
+        // $(".notify").hide().fadeIn(() => {
+        //     $(".notify").animate({
+        //         left: '80px'
+        //     }, 500);
+        // }, 1500).css('left', 0)
+        //$(".notify").fadeIn(800);
+        $(".notify").css({"opacity": "0"})
+        $(".notify").fadeIn()
+        $(".notify").delay(1000).animate({"opacity": "1", "left": "75%"}, 500)
+        $(".notify").delay(1500).animate({"left": "75%"}, 500)
+        $(".notify").delay(2000).animate({"left": "100%", "opacity": "0.2"}, 500)
     }
 })
