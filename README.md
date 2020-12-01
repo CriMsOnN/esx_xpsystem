@@ -10,7 +10,7 @@ _This script adds xp system to your server_
 ## Features
 * **_NUI to buy any items_**
 * **_Full customized through ```/shared/config.lua```_**
-* **_XP per hour**_ 
+* **_XP per hour_** 
 * **_Easy creation of promocode with command ``` /createpromo STRING XP```_**
     * **_example: ```/createpromo CHRISTMAS 500``` will give 500 xp_**
 * **_In-game notification every hour_**
